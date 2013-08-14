@@ -1,19 +1,11 @@
-/* -------INSTRUCTIONS-------
- * Find the errors in this code.
- * There are ten errors in total.
- * Some are obvious, some are more subtle.
- * Look for bad coding practices, as well as logic and syntax errors.
- */
+import java.util.Scanner;
 
-import javax.swing.JOptionPane;
-import java.util.SCan;
-
-public class EggsDemo {
+public class BuggyEggs {
 
 	public static void main(String[] args) {
 		//Declare constants and variables, initialize as appropriate
-		final float PRICE_PER_DOZEN = 3.25;
-		final float PRICE_PER_SINGLE = 0.45f;
+		final float PRICE_PER_DOZEN = (float) 3.25;
+		final float PRICE_PER_SINGLE = (float) 0.45;
 		int eggs, dozens, singles;
 		float dozensCost, singlesCost, totalCost;
 		Scanner kbrd = new Scanner(System.in);
@@ -22,17 +14,17 @@ public class EggsDemo {
 		System.out.print("How many eggs do you want? >> ");
 		eggs = kbrd.nextInt();
 		
-		//This comment is whack, yo!
+		//Calculations
+		singles = eggs % 12;
 		dozens = eggs / 12;
-		singles = eggs * 12;
-		dozensCost = dozens * PRICE_PER_DOZEN;
 		singlesCost = singles * PRICE_PER_SINGLE;
-		totalCost = PRICE_PER_DOZEN + PRICE_PER_SINGLE;
+		dozensCost = dozens * PRICE_PER_DOZEN;
+		totalCost = singlesCost + dozensCost;
 		
-		//User output
+		//System output
 		System.out.println("You ordered " + eggs + " eggs in total.");
-	System.out.println("That's " + dozens + " dozen at $3.50, or $" + dozensCost);
-		System.out.println("That's" + singles + " singles at 45c, or $" + singlesCost);
+		System.out.println("That's " + dozens + " dozen at $3.25, or $" + dozensCost);
+		System.out.println("And That's also " + singles + " singles at 0.45, or $" + singlesCost);
 		System.out.println("Your total cost is $" + totalCost);
 		
 	
